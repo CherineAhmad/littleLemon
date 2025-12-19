@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <footer className="footer-bar">
-      <div className="footer-list">
+      <div className="footer-list section-category">
 
         {/* Logo */}
         <div className="footer-column">
@@ -10,7 +10,7 @@ function Footer() {
 
         {/* Doormat Navigation */}
         <nav className="footer-column" aria-label="Footer navigation">
-          <h4>Doormat Navigation</h4>
+          <h4 className="section-category">Doormat Navigation</h4>
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -23,7 +23,7 @@ function Footer() {
 
         {/* Contact */}
         <section className="footer-column">
-          <h4>Contact</h4>
+          <h4 className="section-category">Contact</h4>
           <ul>
             <li>Address</li>
             <li>Phone Number</li>
@@ -33,7 +33,7 @@ function Footer() {
 
         {/* Social Media */}
         <nav className="footer-column" aria-label="Social media links">
-          <h4>Social Media</h4>
+          <h4 className="section-category">Social Media</h4>
           <ul>
             <li><a href="#">Instagram</a></li>
             <li><a href="#">Facebook</a></li>
