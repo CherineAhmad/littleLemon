@@ -1,11 +1,9 @@
-import Hero from "./hero";
-import Highlight from "./Highlight";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 
-function Main() {
-  return <main>
-    <Hero />
-    <Highlight />
-  </main>;
-}
-
-export default Main;
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);

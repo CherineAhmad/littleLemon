@@ -1,7 +1,7 @@
 // import Card from "./Card";
 function Highlight() {
     return( 
-        <highlight className="highlight">
+        <section className="highlight">
             <div className="highlight-header">
                 <h2 className="title">This week’s specials!</h2>
                 <button className="primary-btn">Online Menu</button>
@@ -48,14 +48,8 @@ function Highlight() {
                         </div>
                     </div>
                 </div>
-
-
-
-
-       
             </div>
-
-        </highlight>
+        </section>
     );
 }
 
