@@ -1,28 +1,39 @@
-
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./App.css";
 
 function Nav() {
   return (
-    <nav aria-label="Primary navigation">
+    <nav>
       <ul className="nav-list section-category">
         <li>
-          <Link className="active" to="/">Home</Link>
+          <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>
+            Home
+          </NavLink>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <NavLink to="/about" className={({ isActive }) => isActive ? "active" : ""}>
+            About
+          </NavLink>
         </li>
         <li>
-          <Link to="/menu">Menu</Link>
+          <NavLink to="/menu" className={({ isActive }) => isActive ? "active" : ""}>
+            Menu
+          </NavLink>
         </li>
         <li>
-          <Link to="/booking">Reservations</Link>
+          <NavLink to="/booking" className={({ isActive }) => isActive ? "active" : ""}>
+            Reservations
+          </NavLink>
         </li>
         <li>
-          <Link to="/order">Order Online</Link>
+          <NavLink to="/order" className={({ isActive }) => isActive ? "active" : ""}>
+            Order Online
+          </NavLink>
         </li>
         <li>
-          <Link to="/login">Login</Link>
+          <NavLink to="/login" className={({ isActive }) => isActive ? "active" : ""}>
+            Login
+          </NavLink>
         </li>
       </ul>
     </nav>

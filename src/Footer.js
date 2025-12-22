@@ -1,3 +1,6 @@
+import { NavLink } from "react-router-dom";
+import "./App.css";
+
 function Footer() {
   return (
     <footer className="footer-bar">
@@ -12,12 +15,42 @@ function Footer() {
         <nav className="footer-column" aria-label="Footer navigation">
           <h4 className="section-category">Doormat Navigation</h4>
           <ul>
-            <li><a href="#home">Home</a></li>
+            {/* <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#menu">Menu</a></li>
             <li><a href="#reservations">Reservations</a></li>
             <li><a href="#order">Order Online</a></li>
-            <li><a href="#login">Login</a></li>
+            <li><a href="#login">Login</a></li> */}
+            <li>
+          <NavLink to="/">
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/about">
+            About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/menu">
+            Menu
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/booking">
+            Reservations
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/order">
+            Order Online
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/login">
+            Login
+          </NavLink>
+        </li>
           </ul>
         </nav>
 
@@ -37,7 +70,6 @@ function Footer() {
           <ul>
             <li><a href="#">Instagram</a></li>
             <li><a href="#">Facebook</a></li>
-            <li><a href="#">Twitter</a></li>
           </ul>
         </nav>
 

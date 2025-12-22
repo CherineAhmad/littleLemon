@@ -1,10 +1,24 @@
 // import Card from "./Card";
+import { useNavigate } from "react-router-dom";
+
 function Highlight() {
+
+    const navigate = useNavigate();
+
+    const goToOnlineMenu = () => {
+        navigate("/menu");
+    };
+
+    const goToOrderOnline = () => {
+        navigate("/order");
+    };
+
+
     return( 
         <section className="highlight">
             <div className="highlight-header">
                 <h2 className="title">This week’s specials!</h2>
-                <button className="primary-btn">Online Menu</button>
+                <button className="primary-btn" onClick={goToOnlineMenu}>Online Menu</button>
             </div>
             <div className="highlight-body">
                 <div className="card">
@@ -16,7 +30,7 @@ function Highlight() {
                         </div>
                         <p className="paragraph">The famous Greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons. </p>
                         <div className="card-button">
-                            <button className="tertiary-btn">Order a delivery</button>
+                            <button className="tertiary-btn" onClick={goToOrderOnline}>Order a delivery</button>
                         </div>
                     </div>
                 </div>
@@ -30,7 +44,7 @@ function Highlight() {
                         </div>
                         <p className="paragraph">Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil </p>
                         <div className="card-button">
-                            <button className="tertiary-btn">Order a delivery</button>
+                            <button className="tertiary-btn" onClick={goToOrderOnline}>Order a delivery</button>
                         </div>
                     </div>
                 </div>
@@ -44,7 +58,7 @@ function Highlight() {
                         </div>
                         <p className="paragraph">This comes straight from grandma’s recipe book, every last ingredient has been sourced and is as authentic as can be imagined. </p>
                         <div className="card-button">
-                            <button className="tertiary-btn">Order a delivery</button>
+                            <button className="tertiary-btn" onClick={goToOrderOnline}>Order a delivery</button>
                         </div>
                     </div>
                 </div>
