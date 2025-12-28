@@ -1,3 +1,5 @@
+/* global fetchAPI */
+// this comment is required since it tells ESLint that fetchAPI is a global variable defined elsewhere (in index.html)
 // useReducer is a React hook for managing state with a reducer function
 import { useReducer } from "react";
 import BookingForm from "../components/BookingForm";
@@ -6,7 +8,11 @@ import BookingForm from "../components/BookingForm";
 // In a real app, this might come from a server or API.
 // For now, it just returns a static array of time slots.
 export const initializeTimes = () => {
-  return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+  // Static list of available times
+  // return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+  // API data
+  const today = new Date();
+  return fetchAPI(today);
 };
 
 // This is the reducer function for updating available times.
@@ -14,7 +20,11 @@ export const initializeTimes = () => {
 // In a real app, the action could contain a date or other info to update times dynamically.
 // Right now, it always returns the same static times.
 export const updateTimes = (state, action) => {
-  return initializeTimes(); // Always return the full list of times for now
+  // return initializeTimes(); // Always return the full list of times for now
+  if (action.type === "UPDATE_TIMES") {
+    return fetchAPI(new Date(action.date));
+  }
+  return state;
 };
 
 function Booking() {
