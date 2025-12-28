@@ -334,18 +334,17 @@
 
 .contact-card {
   background-color: var(--accent-100);
-  padding: 1.5rem;
+  padding: 3rem 2rem;
   color: var(--heading-text);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 1rem;
+  gap: 2rem;
   border-radius: 0rem 1.5rem 1.5rem 0rem;
   
 }
 
 .contact-card h3 {
-  margin-bottom: 1rem;
   color: var(--heading-text);
 }
 
@@ -361,24 +360,23 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   /* gap: 2rem; */
-  max-width: 900px;
+  max-width: 60rem;
   margin: auto;
 }
 
 .booking-form {
   background-color: var(--accent-500);
-  padding: 2rem;
-   border-radius: 1.5rem 0rem 0rem 1.5rem;
+  padding: 1rem;
+  border-radius: 1.5rem 0rem 0rem 1.5rem;
   color: var(--secondary);
 }
 
-.booking-form .title {
-  margin-bottom: 0.5rem;
-}
 
-.booking-form .subtitle {
-  margin-bottom: 2rem;
-  opacity: 0.9;
+.form-header {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form-grid {
@@ -394,6 +392,28 @@
   border: none;
   background-color: var(--secondary);
   color: var(--secondary-text);
+  font-family: var(--lead-font);
+  font-weight: var(--lead-weight);
+  font-size: var(--lead-size);
+}
+
+.form-grid input::placeholder,
+.form-grid select:invalid {
+  color: var(--muted-text);
+
+}
+
+.form-grid input:focus,
+.form-grid select:focus {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+input:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: var(--secondary-text);
+  box-shadow: 0 0 0px 1000px var(--secondary) inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .toddlers {
@@ -422,8 +442,25 @@
   font-size: var(--lead-size);
 }
 
+.booking-form button:disabled,
+.booking-form button.is-disabled {
+  background-color: var(--disabled);
+  color: var(--disabled-text);
+  cursor: not-allowed;
+}
+
+.booking-form button:enabled:hover {
+  background-color: var(--primary-600);
+}
+
 .form-button {
   display: flex;
   justify-content: center; 
   margin-top: 2rem;
+}
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0; /* important for grid layouts */
 }

@@ -5,7 +5,7 @@ import BookingForm from "../components/BookingForm";
 // This function creates the initial list of available times.
 // In a real app, this might come from a server or API.
 // For now, it just returns a static array of time slots.
-const initializeTimes = () => {
+export const initializeTimes = () => {
   return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
 };
 
@@ -13,7 +13,7 @@ const initializeTimes = () => {
 // It receives the current state and an action object.
 // In a real app, the action could contain a date or other info to update times dynamically.
 // Right now, it always returns the same static times.
-const updateTimes = (state, action) => {
+export const updateTimes = (state, action) => {
   return initializeTimes(); // Always return the full list of times for now
 };
 
@@ -40,8 +40,9 @@ function Booking() {
       />
 
       <aside className="contact-card">
-        <h3 className="title">Contact Us</h3>
+        
         <div>
+          <h3 className="title">Contact Us</h3>
           <p className="subtitle">Book through a Call</p>
           <p className="lead-text">+96178598475</p>
         </div>

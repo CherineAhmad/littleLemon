@@ -1,26 +1,32 @@
-import {useState} from "react"; 
+import {useState} from "react";
 
 function BookingForm({ availableTimes = [], dispatch})  {
 
-    const [date, setDate] = useState(""); 
-    const [time, setTime] = useState(""); 
-    const [guests, setGuests] = useState(""); 
+    const [date, setDate] = useState("");
+    const [time, setTime] = useState("");
+    const [guests, setGuests] = useState("");
     const [occasion, setOccasion] = useState("");
     const [location, setLocation] = useState("");
+    const [fullName, setFullName] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [hasToddlers, setHasToddlers] = useState(null);
 
-    const clearForm = () => { 
-        setDate(""); 
-        setTime(""); 
-        setGuests("");  
+    const clearForm = () => {
+        setFullName("");
+        setPhoneNumber("");
+        setDate("");
+        setTime("");
+        setGuests("");
         setLocation("");
         setOccasion("");
-        }; 
+        setHasToddlers(null);
+        };
 
-    const handleSubmit = (e) => { 
-        e.preventDefault(); 
-        alert("Reservation made!"); 
-        clearForm(); 
-    }; 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        alert("Reservation made!");
+        clearForm();
+    };
 
     const handleDateChange = (e) => {
         const selectedDate = e.target.value;
@@ -28,75 +34,141 @@ function BookingForm({ availableTimes = [], dispatch})  {
         dispatch({ type: "UPDATE_TIMES", date: selectedDate });
 
   };
-    const getIsFormValid = () => { 
-        return ( 
-            date && time && guests > 0 && occasion && location
-        ); 
-    }; 
+    const getIsFormValid = () => {
+        return (
+            fullName.trim().length > 2 &&
+            phoneNumber.trim().length >= 7 &&
+            date &&
+            time &&
+            guests > 0 &&
+            occasion &&
+            location &&
+            hasToddlers !== null
+        );
+    };
 
 
     return (
     <form className="booking-form" onSubmit={handleSubmit}>
-      <h2 className="title">Online Reservation</h2>
-      <p className="subtitle">fill this form to reserve a table</p>
+    <fieldset>
 
-      <div className="form-grid">
-        <input type="text" placeholder="Full Name" />
+        <header className="form-header">
+            <h2 className="title">Online Reservation</h2>
+            <p className="subtitle">fill this form to reserve a table</p>
+        </header>
 
-        <input type="tel" placeholder="Phone Number" />
+        <div className="form-grid">
+            <input
+                id="full-name"
+                name="fullName"
+                type="text"
+                placeholder="Full Name"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+            />
 
-        <input
-          type="date"
-          value={date}
-          onChange={handleDateChange}
-        />
+            <input
+                id="phone-number"
+                name="phoneNumber"
+                type="tel"
+                pattern="^\+?[0-9\s]{7,15}$"
+                placeholder="Phone Number"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+            />
 
-        <select value={time} onChange={(e) => setTime(e.target.value)}>
-          <option value="" disabled>Time</option>
-          {availableTimes.map((t) => (
-            <option key={t}>{t}</option>
-          ))}
-        </select>
+            <input
+                id="res-date"
+                type="date"
+                placeholder="mm/dd/yyyy"
+                value={date}
+                onChange={handleDateChange}
+            />
 
-        <input
-          type="number"
-          min="1"
-          max="10"
-          value={guests}
-          onChange={(e) => setGuests(e.target.value)}
-          placeholder="Person"
-        />
+            <select
+                id="res-time"
+                value={time}
+                placeholder="Time"
+                onChange={(e) => setTime(e.target.value)}
+            >
+                <option value="" disabled>Time</option>
+                {availableTimes.map((t) => (
+                    <option key={t}> {t} </option>
+                ))}
+            </select>
 
-        <select value={location} onChange={(e) => setLocation(e.target.value)}>
-          <option value="" disabled>Table Location</option>
-          <option>Indoor</option>
-          <option>Outdoor</option>
-          <option>Random</option>
-        </select>
+            <input
+                id="guests"
+                type="number"
+                min="1"
+                max="10"
+                value={guests}
+                onChange={(e) => setGuests(e.target.value)}
+                placeholder="Person"
+            />
 
-        <select value={occasion} onChange={(e) => setOccasion(e.target.value)}>
-          <option value="" disabled>Occasion</option>
-          <option>Birthday</option>
-          <option>Anniversary</option>
-          <option>Engagement</option>
-          <option>No special occasion</option>
-        </select>
+            <select
+                id="location"
+                value={location}
+                placeholder="Table Location"
+                onChange={(e) => setLocation(e.target.value)}
+            >
+                <option value="" disabled>Table Location</option>
+                <option value="indoor">Indoor</option>
+                <option value="outdoor">Outdoor</option>
+                <option value="random">Random</option>
+            </select>
 
-        <div className="toddlers section-title">
-            <span>young toddlers?</span>
-            <div className="options lead-text">
-                <label><input type="radio" name="kids" /> Yes</label>
-                <label><input type="radio" name="kids" /> No</label>
-            </div>
+            <select
+                id="occasion"
+                value={occasion}
+                placeholder="Occasion"
+                onChange={(e) => setOccasion(e.target.value)}
+            >
+                <option value="" disabled>Occasion</option>
+                <option value="birthday">Birthday</option>
+                <option value="anniversary">Anniversary</option>
+                <option value="engagement">Engagement</option>
+                <option value="no-special-occasion">No special occasion</option>
+            </select>
+
+            <fieldset className="toddlers section-title">
+                <legend>young toddlers?</legend>
+                <div className="options lead-text">
+                    <label>
+                        <input
+                            type="radio"
+                            name="kids"
+                            value="yes"
+                            checked={hasToddlers === "yes"}
+                            onChange={() => setHasToddlers("yes")}
+                        /> Yes
+                    </label>
+                    <label>
+                        <input
+                            type="radio"
+                            name="kids"
+                            value="no"
+                            checked={hasToddlers === "no"}
+                            onChange={() => setHasToddlers("no")}
+                        /> No
+                    </label>
+                </div>
+            </fieldset>
+
         </div>
 
-      </div>
-      
-     <div className="form-button">
-      <button type="submit" disabled={!getIsFormValid()}>
-        Make Your Reservation
-      </button>
-      </div>
+        <div className="form-button">
+            <button
+                type="submit"
+                className={!getIsFormValid() ? "is-disabled" : ""}
+                disabled={!getIsFormValid()}
+            >
+            Make Your Reservation
+            </button>
+        </div>
+
+      </fieldset>
     </form>
   );
 }

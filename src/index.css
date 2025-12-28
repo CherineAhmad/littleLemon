@@ -34,21 +34,21 @@
   /* Titles */
   --title-font: var(--font-markazi);
   --title-weight: 500;
-  --title-size: 4rem;
+  --title-size: 3.5rem;
 
   --subtitle-font: var(--font-markazi);
   --subtitle-weight: 400;
-  --subtitle-size: 2.5rem;
+  --subtitle-size: 2rem;
 
   /* Lead text */
   --lead-font: var(--font-karla);
   --lead-weight: 500;
-  --lead-size: 1.125rem;
+  --lead-size: 1.1rem;
 
   /* Section titles */
   --section-title-font: var(--font-karla);
   --section-title-weight: 800;
-  --section-title-size: 1.25rem;
+  --section-title-size: 1.2rem;
 
   --section-category-font: var(--font-karla);
   --section-category-weight: 800;
@@ -57,13 +57,13 @@
   /* Card title */
   --card-title-font: var(--font-karla);
   --card-title-weight: 700;
-  --card-title-size: 1.125rem;
+  --card-title-size: 1.1rem;
 
   /* Paragraph */
   --paragraph-font: var(--font-karla);
   --paragraph-weight: 400;
   --paragraph-size: 1rem;
-  --paragraph-line-height: 1.125; /* 1.125rem */
+  --paragraph-line-height: 1.1; /* 1.125rem */
 
   /* Highlight text */
   --highlight-font: var(--font-karla);
