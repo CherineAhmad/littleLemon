@@ -343,6 +343,18 @@
   border-radius: 0rem 1.5rem 1.5rem 0rem;
   
 }
+.confirmation {
+  background-color: var(--accent-100);
+  padding: 3rem 2rem;
+  color: var(--heading-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2rem;
+  border-radius: 1.5rem;
+  max-width: 60rem;
+  margin: auto;
+}
 
 .contact-card h3 {
   color: var(--heading-text);
@@ -463,4 +475,11 @@ fieldset {
   margin: 0;
   padding: 0;
   min-width: 0; /* important for grid layouts */
+}
+
+.booking-confirmation {
+  background-color: var(--accent-100);
+  padding: 1rem;
+  border-radius: 1.5rem;
+  color: var(--accent-500);
 }

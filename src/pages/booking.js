@@ -1,8 +1,9 @@
-/* global fetchAPI */
-// this comment is required since it tells ESLint that fetchAPI is a global variable defined elsewhere (in index.html)
 // useReducer is a React hook for managing state with a reducer function
 import { useReducer } from "react";
+import { useNavigate } from "react-router-dom";
 import BookingForm from "../components/BookingForm";
+import { submitAPI, fetchAPI } from "../api";
+
 
 // This function creates the initial list of available times.
 // In a real app, this might come from a server or API.
@@ -27,7 +28,16 @@ export const updateTimes = (state, action) => {
   return state;
 };
 
+
+
 function Booking() {
+  const navigate = useNavigate();
+
+  const submitForm = (formData) => {
+  if (submitAPI(formData)) {
+    navigate("/confirmed-booking");
+  }
+};
    // useReducer takes a reducer function and an initial state.
   // It returns the current state (availableTimes) and a dispatch function to update it.
   // dispatch is how child components can trigger/request state changes.
@@ -47,6 +57,7 @@ function Booking() {
       <BookingForm
         availableTimes={availableTimes}
         dispatch={dispatch}
+        submitForm={submitForm}
       />
 
       <aside className="contact-card">
