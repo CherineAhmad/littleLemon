@@ -1,7 +1,6 @@
 import {useState} from "react";
 
 function BookingForm({ availableTimes = [], dispatch, submitForm })  {
-
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
     const [guests, setGuests] = useState("");
@@ -57,6 +56,17 @@ function BookingForm({ availableTimes = [], dispatch, submitForm })  {
         );
     };
 
+    const [touched, setTouched] = useState({});
+    
+    const markTouched = (field) => {
+        setTouched((prev) => ({ ...prev, [field]: true }));
+    };
+
+    const isNameValid = fullName.trim().length > 2;
+    const isPhoneValid = /^\+?[0-9\s]{7,15}$/.test(phoneNumber);
+    const isGuestsValid = guests > 0;
+
+
 
     return (
     <form className="booking-form" onSubmit={handleSubmit}>
@@ -68,30 +78,46 @@ function BookingForm({ availableTimes = [], dispatch, submitForm })  {
         </header>
 
         <div className="form-grid">
-            <input
-                id="full-name"
-                name="fullName"
-                type="text"
-                placeholder="Full Name"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-            />
+            <div className="field">
+                <input
+                    id="full-name"
+                    name="fullName"
+                    type="text"
+                    placeholder="Full Name"
+                    value={fullName}
+                    required
+                    minLength={3}
+                    onChange={(e) => setFullName(e.target.value)}
+                    onBlur={() => markTouched("fullName")}
+                />
+                {touched.fullName && !isNameValid && (
+                    <span className="error-text">Name must be at least 3 characters</span>
+                )}
+            </div>
 
-            <input
-                id="phone-number"
-                name="phoneNumber"
-                type="tel"
-                pattern="^\+?[0-9\s]{7,15}$"
-                placeholder="Phone Number"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-            />
+            <div className="field">
+                <input
+                    id="phone-number"
+                    name="phoneNumber"
+                    type="tel"
+                    pattern="^\+?[0-9\s]{7,15}$"
+                    placeholder="Phone Number"
+                    required
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    onBlur={() => markTouched("phoneNumber")}
+                />
+                {touched.phoneNumber && !isPhoneValid && (
+                    <span className="error-text">Enter a valid phone number</span>
+                )}
+            </div>
 
             <input
                 id="res-date"
                 type="date"
                 placeholder="mm/dd/yyyy"
                 value={date}
+                required
                 onChange={handleDateChange}
             />
 
@@ -99,6 +125,7 @@ function BookingForm({ availableTimes = [], dispatch, submitForm })  {
                 id="res-time"
                 value={time}
                 placeholder="Time"
+                required
                 onChange={(e) => setTime(e.target.value)}
             >
                 <option value="" disabled>Time</option>
@@ -107,20 +134,28 @@ function BookingForm({ availableTimes = [], dispatch, submitForm })  {
                 ))}
             </select>
 
+            <div className="field">
             <input
                 id="guests"
                 type="number"
                 min="1"
                 max="10"
                 value={guests}
+                required
                 onChange={(e) => setGuests(e.target.value)}
                 placeholder="Person"
+                onBlur={() => markTouched("guests")}
             />
+            {touched.guests && !isGuestsValid && (
+                <span className="error-text">At least 1 guest is required</span>
+            )}
+            </div>
 
             <select
                 id="location"
                 value={location}
-                placeholder="Table Location"
+                // placeholder="Table Location"
+                required
                 onChange={(e) => setLocation(e.target.value)}
             >
                 <option value="" disabled>Table Location</option>
@@ -132,7 +167,8 @@ function BookingForm({ availableTimes = [], dispatch, submitForm })  {
             <select
                 id="occasion"
                 value={occasion}
-                placeholder="Occasion"
+                required
+                // placeholder="Occasion"
                 onChange={(e) => setOccasion(e.target.value)}
             >
                 <option value="" disabled>Occasion</option>

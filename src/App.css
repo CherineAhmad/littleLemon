@@ -394,8 +394,29 @@
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: 1.25rem 2rem;
 }
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.error-text {
+  margin-top: 0.25rem;
+  border-radius: 0.5rem;
+  font-family: var(--paragraph-font);
+  font-weight: var(--paragraph-weight);
+  font-size: var(--paragraph-size);
+  line-height: var(--paragraph-line-height);
+  color: var(--error-500);
+  background-color: var(--error-background)!important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
 
 .form-grid input,
 .form-grid select {
