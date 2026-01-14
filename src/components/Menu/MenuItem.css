@@ -1,0 +1,44 @@
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--accent-500);
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  color: var(--inverse-text);
+}
+
+.menu-item__image {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.menu-item__content {
+  flex: 1;
+}
+
+.menu-item__title {
+  margin: 0.5rem 0;
+  font-size: var(--card-title-size);
+  font-weight: var(--card-title-weight);
+  font-family: var(--card-title-font);
+}
+
+.menu-item__description {
+  margin: 0.25 0 0;
+  font-family: var(----paragraph-font);
+  font-size: var(--paragraph-size);
+  line-height: var(--paragraph-line-height);
+  font-weight: var(--paragraph-weight);
+  color: var(--accent-100);
+  
+}
+
+.menu-item__price {
+  font-size: var(--card-title-size);
+  font-weight: var(--card-title-weight);
+  font-family: var(--card-title-font);
+  white-space: nowrap;
+}
