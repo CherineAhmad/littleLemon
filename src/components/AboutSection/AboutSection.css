@@ -1,0 +1,36 @@
+.about-section {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+    min-height: 80vh;
+  padding: 16rem 0; /* space top & bottom */
+}
+
+.overlay {
+  background-color: rgba(73, 94, 87, 0.74);
+  display: flex;
+  align-items: center;     /* vertical center */
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  width:50%;
+  height:311px;
+    /* max-width: 60rem; */
+  margin: auto;
+}
+
+.content {
+  max-width: 600px;
+  color: var(--inverse-text);
+  align-items: center;
+  text-align: center;
+}
+
+.content h2, .content h3 {
+  color: var(--primary-500);
+}
+
+.content h3 {
+  margin-top: 0rem;
+  margin-bottom: 1rem;;
+}
